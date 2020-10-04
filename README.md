@@ -49,28 +49,28 @@ The solver operates as follows:
 ![Horizontl Lines](/images/sudoku6_horizontal_lines.png)
 
     5. The two vertical and horizontal images are combines to form the grid space without the characters,
-    is then its colors are inverted back.
+        is then its colors are inverted back.
 
 ![Grid](/images/sudoku6_grid_lines.png)
 
-    6. Using this grid, the contours and bounding box functions in OpenCV are applied to find all the individuals cells. 
-    These cells are found starting left to right, and are ordered based on their areas. 
+    6. Using this grid, the contours and bounding box functions in OpenCV are applied to find all the 
+        individuals cells. These cells are found starting left to right, and are ordered based on their areas. 
     
     7. The boxes are then filtered based on a heursitic that a cell is acknolwedged as desirable if its height and width 
-    are not much grater nor smaller than the average width and height of all the boxes. This precents from including the
-    entire grid's bounding box for example.
+        are not much grater nor smaller than the average width and height of all the boxes. This precents from including
+        the entire grid's bounding box for example.
     
-    8. After filtering for unwanted cells, we arrange in them an array of arrays to indicate which rows and columns they belong.
-    This is done using two steps: first gathering them together at the right level, then more accurately arranging the 
-    contens of the second-level arrays using the center point coordinates of each box.
+    8. After filtering for unwanted cells, we arrange in them an array of arrays to indicate which rows and columns they
+        belong. This is done using two steps: first gathering them together at the right level, then more accurately arranging the 
+        contens of the second-level arrays using the center point coordinates of each box.
     
     9. With the arranged cells ready, we iterate through them to capture each cell's portion of the overall image, and 
-    feed that into either Pytesseract or the Pytorch model. Each cell image output is stored until we have an array representation
-    of the original image.
+        feed that into either Pytesseract or the Pytorch model. Each cell image output is stored until we have an array 
+        representation of the original image.
     
-    10. Ths Sudoku array is fed into a function called *solver()* which, with a helper function called *possible()*, attempts
-    to solve the Sudoku puzzle using recursion and backtracking. The output is printed on-screen and the option to
-    attempt to find and display another solution is presented in a prompt.
+    10. Ths Sudoku array is fed into a function called *solver()* which, with a helper function called *possible()*, 
+        attempts to solve the Sudoku puzzle using recursion and backtracking. The output is printed on-screen and the 
+        option to attempt to find and display another solution is presented in a prompt.
 
 ## References
 
